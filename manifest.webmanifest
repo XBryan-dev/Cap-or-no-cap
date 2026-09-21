@@ -1,0 +1,18 @@
+{
+  "name": "Cap or No Cap",
+  "short_name": "CapNoCap",
+  "description": "Spot the real Cameroonian slang, proverbs and facts from the convincing fakes — before the timer runs out.",
+  "id": "/cap-or-no-cap/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4ecd8",
+  "theme_color": "#2b2420",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
