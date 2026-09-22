@@ -86,8 +86,10 @@
   }
   @keyframes markIn{ from{ transform:scale(0.4) rotate(-14deg); opacity:0; } to{ transform:scale(1) rotate(0); opacity:1; } }
   #splashTrack{ width:140px; height:5px; border-radius:4px; background:rgba(244,236,216,0.18); overflow:hidden; }
-  #splashBar{ height:100%; width:0%; background:var(--accent); border-radius:4px; animation: loadFill 1.1s ease forwards; }
+  #splashBar{ height:100%; width:0%; background:var(--accent); border-radius:4px; animation: loadFill 2.3s cubic-bezier(.3,.6,.4,1) forwards; }
   @keyframes loadFill{ from{ width:0%; } to{ width:100%; } }
+  @keyframes markPulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.06); } }
+  #splashMark{ animation: markIn 0.6s cubic-bezier(.3,1.4,.5,1), markPulse 1.3s ease-in-out 0.6s infinite; }
   #splashLabel{ color:var(--bg); opacity:0.7; font-size:0.82rem; letter-spacing:0.03em; }
 
   /* ---------- Shared overlay ---------- */
@@ -445,7 +447,173 @@
     { text: "\u201cFon\u201d is Pidgin slang for a mobile phone.", tag: "Slang", real: false,
       explain: "Cap — a Fon is a traditional Grassfields ruler, not a phone." },
     { text: "\u201cWahala\u201d means a peaceful, relaxing moment with no stress at all.", tag: "Slang", real: false,
-      explain: "Cap — wahala means the exact opposite: trouble." }
+      explain: "Cap — wahala means the exact opposite: trouble." },
+
+    { text: "\"Ashia\" is used to express real sympathy — it means much more than a casual \"sorry.\"", tag: "Slang", real: true,
+      explain: "True — Cameroonians use it to show genuine empathy." },
+    { text: "\"Wusai toilet dey?\" is a polite way to ask \"Where is the bathroom?\"", tag: "Slang", real: true,
+      explain: "True — you could also just say \"Wusai toilet?\"" },
+    { text: "\"A want go market\" simply means \"I want to go to the market.\"", tag: "Slang", real: true,
+      explain: "True — swap \"market\" for any place you want to go." },
+    { text: "\"A di hungry\" and \"A want chop\" both mean \"I'm hungry.\"", tag: "Slang", real: true,
+      explain: "True — chop means food, so wanting chop means wanting to eat." },
+    { text: "\"A beg for water\" is a polite way to ask for a drink of water.", tag: "Slang", real: true,
+      explain: "True — \"beg\" here just softens the request, like \"please.\"" },
+    { text: "\"Dis chop fine\" means \"This food is delicious.\"", tag: "Slang", real: true,
+      explain: "True — a solid compliment to give the cook." },
+    { text: "\"Na how much?\" is what you ask a seller to find out the price.", tag: "Slang", real: true,
+      explain: "True — essential for bargaining at the market." },
+    { text: "\"E dear\" or \"e over dear\" means something is too expensive.", tag: "Slang", real: true,
+      explain: "True — useful right before you start bargaining." },
+    { text: "Repeating a word, like \"fine-fine,\" is a common way Pidgin adds emphasis.", tag: "Fact", real: true,
+      explain: "True — linguists call this reduplication, and it's a real grammatical feature." },
+    { text: "\"Grafi\" is one of the recognized regional dialects of Cameroon Pidgin English.", tag: "Fact", real: true,
+      explain: "True — alongside dialects like Liturgical and Limbe Pidgin." },
+    { text: "Pidgin English was spoken in Cameroon before standard English arrived.", tag: "Fact", real: true,
+      explain: "True — early missionaries in the 1840s had to learn Pidgin first." },
+    { text: "About half of Cameroonians can speak some Pidgin, though few grew up speaking it as a first language.", tag: "Fact", real: true,
+      explain: "True — only around 5% are native speakers, but usage is far wider." },
+    { text: "\"Not all skin teeth be laugh\" means not everyone who smiles at you actually means well.", tag: "Proverb", real: true,
+      explain: "True — \"skin teeth\" means to bare your teeth in a smile." },
+    { text: "\"Monkey no fine, but im mama like am\" means everyone is loved by someone, flaws and all.", tag: "Proverb", real: true,
+      explain: "True — a gentle reminder that beauty is in the eye of the beholder." },
+    { text: "\"One hand no fit tie bundle\" means some jobs really do need teamwork.", tag: "Proverb", real: true,
+      explain: "True — you need both hands to tie a proper bundle." },
+    { text: "Yaound\u00e9 is Cameroon's political capital, while Douala is the largest city and economic hub.", tag: "Fact", real: true,
+      explain: "True — the two cities split the country's biggest roles." },
+    { text: "Mount Cameroon, an active volcano, is the highest peak in West and Central Africa.", tag: "Fact", real: true,
+      explain: "True — it has erupted several times in the last few decades." },
+    { text: "Cameroon became independent from France in 1960, and the English-speaking Southern Cameroons joined by vote in 1961.", tag: "Fact", real: true,
+      explain: "True — that's how the country ended up with two official languages." },
+    { text: "In 1986, Lake Nyos released a massive cloud of gas that killed over a thousand people overnight.", tag: "Fact", real: true,
+      explain: "True — a sudden natural release of carbon dioxide from the lake itself." },
+    { text: "Cameroon's national football team is nicknamed the \"Indomitable Lions.\"", tag: "Fact", real: true,
+      explain: "True — one of the most recognized nicknames in African football." },
+    { text: "Cameroon was the first African team ever to reach a FIFA World Cup quarterfinal, in 1990.", tag: "Fact", real: true,
+      explain: "True — a legendary run at Italia '90." },
+    { text: "Waza National Park in northern Cameroon is known for its elephants, giraffes and lions.", tag: "Fact", real: true,
+      explain: "True — one of Central Africa's best-known wildlife reserves." },
+    { text: "Cameroon shares land borders with six different countries.", tag: "Fact", real: true,
+      explain: "True — Nigeria, Chad, CAR, Congo, Gabon and Equatorial Guinea." },
+    { text: "Cameroon's flag has a single yellow star, sometimes called the \"star of unity.\"", tag: "Fact", real: true,
+      explain: "True — sitting right in the middle of the red band." },
+    { text: "The historic Bamoun Sultan's Palace is located in the city of Foumban.", tag: "Fact", real: true,
+      explain: "True — known for its history and traditional craftsmanship." },
+    { text: "The Ngondo festival, celebrated by coastal Sawa communities, features a canoe race on the Wouri River.", tag: "Fact", real: true,
+      explain: "True — held annually in Douala." },
+    { text: "Cameroon is divided into 10 regions.", tag: "Fact", real: true,
+      explain: "True — each with its own capital and regional government." },
+    { text: "Cameroon is nicknamed \"Africa in Miniature\" for having nearly every major African landscape within one country.", tag: "Fact", real: true,
+      explain: "True — desert, mountains, rainforest and coastline all in one place." },
+    { text: "The Bamileke people, from Cameroon's western highlands, are widely known for their strong business and trading culture.", tag: "Fact", real: true,
+      explain: "True — Bamileke entrepreneurs are influential across the country." },
+    { text: "Cameroon's currency, the Central African CFA franc, is pegged to the euro.", tag: "Fact", real: true,
+      explain: "True — it's shared with several neighboring countries too." },
+    { text: "Douala is home to Cameroon's main seaport.", tag: "Fact", real: true,
+      explain: "True — most of the country's imports and exports pass through it." },
+    { text: "Cameroon is one of the world's larger cocoa producers.", tag: "Fact", real: true,
+      explain: "True — cocoa is a major export crop." },
+    { text: "Cameroon is home to over 250 native languages.", tag: "Fact", real: true,
+      explain: "True — one of the most linguistically diverse countries in Africa." },
+    { text: "\"Nyanga\" is Pidgin slang for showing off or dressing to impress.", tag: "Slang", real: true,
+      explain: "True — someone doing \"plenty nyanga\" is dressed to be noticed." },
+    { text: "\"Waka\" means to walk, or to go out and move around.", tag: "Slang", real: true,
+      explain: "True — a core, everyday Pidgin verb." },
+    { text: "\"Sabi\" means \"to know.\"", tag: "Slang", real: true,
+      explain: "True — \"A no sabi\" means \"I don't know.\"" },
+    { text: "\"Palava\" describes trouble, drama, or a long drawn-out fuss.", tag: "Slang", real: true,
+      explain: "True — \"no make palava\" means don't cause trouble." },
+    { text: "\"Bobolo\" is a Cameroonian dish made of fermented cassava wrapped in leaves.", tag: "Fact", real: true,
+      explain: "True — a common side served with grilled fish." },
+    { text: "\"Suya\" refers to spicy grilled meat skewers, a popular West African street food enjoyed in Cameroon.", tag: "Fact", real: true,
+      explain: "True — usually coated in a spicy peanut-based seasoning." },
+    { text: "\"Bendskin\" is the local word for a motorcycle taxi.", tag: "Slang", real: true,
+      explain: "True — one of the most common ways to get around in many Cameroonian towns." },
+    { text: "\"Clando\" refers to an unofficial, unlicensed taxi.", tag: "Slang", real: true,
+      explain: "True — short for \"clandestine.\"" },
+
+    { text: "\"Ashia\" is slang used specifically to greet someone in the morning.", tag: "Slang", real: false,
+      explain: "Cap — ashia actually expresses sympathy, closer to \"I feel for you.\"" },
+    { text: "\"Wusai toilet dey?\" actually means \"Where is the market?\"", tag: "Slang", real: false,
+      explain: "Cap — it really means \"Where is the bathroom?\"" },
+    { text: "\"A want go market\" is only ever used when leaving a party early.", tag: "Slang", real: false,
+      explain: "Cap — it just means \"I want to go to the market.\"" },
+    { text: "\"A di hungry\" actually means \"I am tired,\" not hungry.", tag: "Slang", real: false,
+      explain: "Cap — it genuinely means \"I'm hungry.\"" },
+    { text: "\"A beg for water\" is a phrase for asking someone to turn on the shower.", tag: "Slang", real: false,
+      explain: "Cap — it just means asking for a drink of water." },
+    { text: "\"Dis chop fine\" means the food looks pretty, not that it tastes good.", tag: "Slang", real: false,
+      explain: "Cap — it means the food actually tastes delicious." },
+    { text: "\"Na how much?\" is a greeting used only between close friends.", tag: "Slang", real: false,
+      explain: "Cap — it's simply asking the price of something." },
+    { text: "\"E dear\" means something is rare, not expensive.", tag: "Slang", real: false,
+      explain: "Cap — e dear means something costs too much." },
+    { text: "Repeating a word in Pidgin, like \"fine-fine,\" is only used in baby talk with children.", tag: "Fact", real: false,
+      explain: "Cap — it's a normal way to add emphasis in everyday speech." },
+    { text: "\"Grafi\" is the single official dialect of Cameroon Pidgin taught in schools.", tag: "Fact", real: false,
+      explain: "Cap — Pidgin isn't a formal school subject, and Grafi is just one regional dialect among several." },
+    { text: "English was spoken in Cameroon long before Pidgin ever existed.", tag: "Fact", real: false,
+      explain: "Cap — it's actually the other way around." },
+    { text: "Nearly all Cameroonians grow up speaking Pidgin as their first language at home.", tag: "Fact", real: false,
+      explain: "Cap — only around 5% are native speakers, even though many more use it." },
+    { text: "\"Not all skin teeth be laugh\" means you should always smile back at strangers.", tag: "Proverb", real: false,
+      explain: "Cap — it actually warns that not every smile is genuine." },
+    { text: "\"Monkey no fine, but im mama like am\" is used to describe a fussy eater.", tag: "Proverb", real: false,
+      explain: "Cap — it's about how everyone is loved by someone, flaws included." },
+    { text: "\"One hand no fit tie bundle\" means it's faster to always work alone.", tag: "Proverb", real: false,
+      explain: "Cap — it actually means the opposite: some things need teamwork." },
+    { text: "Douala is Cameroon's political capital, while Yaound\u00e9 is the country's largest city.", tag: "Fact", real: false,
+      explain: "Cap — it's the other way around." },
+    { text: "Mount Cameroon is an extinct volcano that hasn't erupted in over 500 years.", tag: "Fact", real: false,
+      explain: "Cap — it's very much active, with eruptions in recent decades." },
+    { text: "Cameroon gained independence in 1975.", tag: "Fact", real: false,
+      explain: "Cap — independence came in 1960, with reunification following in 1961." },
+    { text: "The Lake Nyos disaster of 1986 was caused by a major earthquake.", tag: "Fact", real: false,
+      explain: "Cap — it was actually a sudden release of carbon dioxide gas from the lake itself." },
+    { text: "Cameroon's national football team is nicknamed the \"Desert Hawks.\"", tag: "Fact", real: false,
+      explain: "Cap — they're actually known as the Indomitable Lions." },
+    { text: "Cameroon has won the FIFA World Cup outright.", tag: "Fact", real: false,
+      explain: "Cap — their best result is reaching the quarterfinals, in 1990." },
+    { text: "Waza National Park is best known for its penguins and Arctic wildlife.", tag: "Fact", real: false,
+      explain: "Cap — it's actually known for elephants, giraffes and lions." },
+    { text: "Cameroon shares a land border with only one other country.", tag: "Fact", real: false,
+      explain: "Cap — it actually borders six different countries." },
+    { text: "Cameroon's flag features two stars side by side.", tag: "Fact", real: false,
+      explain: "Cap — there's just one star, in the center." },
+    { text: "The Bamoun Sultan's Palace is located in the coastal city of Limbe.", tag: "Fact", real: false,
+      explain: "Cap — it's actually in Foumban." },
+    { text: "The Ngondo festival's canoe race takes place on Lake Nyos.", tag: "Fact", real: false,
+      explain: "Cap — it actually happens on the Wouri River in Douala." },
+    { text: "Cameroon is divided into 15 regions.", tag: "Fact", real: false,
+      explain: "Cap — there are 10." },
+    { text: "Cameroon is nicknamed \"The Green Giant\" for its rainforest coverage.", tag: "Fact", real: false,
+      explain: "Cap — the real nickname is \"Africa in Miniature.\"" },
+    { text: "The Bamileke people are best known nationally for their fishing traditions.", tag: "Fact", real: false,
+      explain: "Cap — they're best known for business and trading." },
+    { text: "Cameroon's currency is pegged to the US dollar.", tag: "Fact", real: false,
+      explain: "Cap — it's pegged to the euro." },
+    { text: "Yaound\u00e9 is home to Cameroon's main seaport.", tag: "Fact", real: false,
+      explain: "Cap — Yaound\u00e9 is inland; the main seaport is in Douala." },
+    { text: "Cameroon grows almost no cocoa at all.", tag: "Fact", real: false,
+      explain: "Cap — cocoa is actually one of its major exports." },
+    { text: "Cameroon has fewer than 20 native languages spoken across the country.", tag: "Fact", real: false,
+      explain: "Cap — it actually has over 250." },
+    { text: "\"Nyanga\" is Pidgin slang for feeling sick or unwell.", tag: "Slang", real: false,
+      explain: "Cap — it actually means showing off or dressing to impress." },
+    { text: "\"Waka\" means to sit down and rest.", tag: "Slang", real: false,
+      explain: "Cap — it means to walk or move around." },
+    { text: "\"Sabi\" actually means \"to eat,\" not \"to know.\"", tag: "Slang", real: false,
+      explain: "Cap — sabi means to know." },
+    { text: "\"Palava\" describes a calm, peaceful gathering.", tag: "Slang", real: false,
+      explain: "Cap — it actually means trouble or a big fuss." },
+    { text: "\"Bobolo\" is a sweet dessert made from ripe plantain.", tag: "Fact", real: false,
+      explain: "Cap — it's actually a savory fermented cassava dish." },
+    { text: "\"Suya\" is a cold soup traditionally served during the rainy season.", tag: "Fact", real: false,
+      explain: "Cap — it's actually spicy grilled meat skewers." },
+    { text: "\"Bendskin\" refers to a large truck used for moving furniture.", tag: "Slang", real: false,
+      explain: "Cap — it's actually a motorcycle taxi." },
+    { text: "\"Clando\" is the word for a licensed, government-run taxi service.", tag: "Slang", real: false,
+      explain: "Cap — it actually means the opposite: an unlicensed, informal taxi." }
   ];
 
   // ---------- element refs ----------
@@ -509,8 +677,19 @@
   }
 
   // ---------- splash ----------
+  var splashLabelEl = document.getElementById('splashLabelTxt');
+  var splashMessages = ['Loading Cap or No Cap…', 'Shuffling the deck…', 'Warming up the timer…', 'Almost ready…'];
+  var splashMsgIndex = 0;
+  var splashMsgInterval = setInterval(function(){
+    splashMsgIndex = (splashMsgIndex + 1) % splashMessages.length;
+    splashLabelEl.textContent = splashMessages[splashMsgIndex];
+  }, 580);
+
   window.addEventListener('load', function(){
-    setTimeout(function(){ splash.classList.add('hide'); }, 1100);
+    setTimeout(function(){
+      clearInterval(splashMsgInterval);
+      splash.classList.add('hide');
+    }, 2300);
   });
 
   // ---------- home / navigation ----------
