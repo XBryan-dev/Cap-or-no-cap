@@ -6,6 +6,7 @@
 <title>Cap or No Cap</title>
 <meta name="description" content="Spot the real Cameroonian slang, proverbs and facts from the convincing fakes — before the timer runs out.">
 <meta name="theme-color" content="#2b2420">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CapNoCap">
@@ -352,10 +353,11 @@
       <button class="catChip" data-cat="Fact">Facts</button>
     </div>
 
+    <button class="btn ghost small" id="installBtn" style="display:none;">📲 Add to Home Screen</button>
     <button class="btn ghost small" id="howBtn">How to play</button>
 
     <div id="homeFooter">
-      <span id="versionTag">v1.1.0</span>
+      <span id="versionTag">v1.2.0</span>
       <button class="iconbtn" id="exitBtn" title="Exit">✕</button>
     </div>
   </div>
@@ -390,6 +392,17 @@
         <button id="realBtn">✅ Real</button>
       </div>
       <div id="learnNextRow"><button id="learnNextBtn">Next card →</button></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="iosInstallOverlay">
+    <div class="panel">
+      <h2>Add to Home Screen</h2>
+      <p>iOS doesn't let apps trigger this automatically — three quick taps:</p>
+      <p>1. Tap the <b>Share</b> icon (⬆️) in Safari's toolbar.</p>
+      <p>2. Scroll down and tap <b>"Add to Home Screen."</b></p>
+      <p>3. Tap <b>Add</b> — it'll now open full-screen, like a real app.</p>
+      <div class="stack-btns"><button class="btn" id="iosInstallCloseBtn">Got it</button></div>
     </div>
   </div>
 
@@ -473,7 +486,7 @@
 (function(){
   "use strict";
 
-  var APP_VERSION = "1.1.0";
+  var APP_VERSION = "1.2.0";
 
   var ITEMS = [
     { text: "\u201cKatika\u201d is Pidgin for a caretaker or security guard.", tag: "Slang", real: true,
@@ -872,6 +885,48 @@
 
   howBtn.addEventListener('pointerdown', function(e){ e.preventDefault(); howOverlay.classList.add('show'); });
   howCloseBtn.addEventListener('pointerdown', function(e){ e.preventDefault(); howOverlay.classList.remove('show'); });
+
+  // ================= install button =================
+  var installBtn = document.getElementById('installBtn');
+  var iosInstallOverlay = document.getElementById('iosInstallOverlay');
+  var iosInstallCloseBtn = document.getElementById('iosInstallCloseBtn');
+  var deferredInstallEvent = null;
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+
+  function isStandalone(){
+    return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+      window.navigator.standalone === true;
+  }
+
+  if(!isStandalone()){
+    if(isIOS){
+      installBtn.style.display = 'inline-block';
+      installBtn.addEventListener('pointerdown', function(e){
+        e.preventDefault();
+        iosInstallOverlay.classList.add('show');
+      });
+    } else {
+      window.addEventListener('beforeinstallprompt', function(e){
+        e.preventDefault();
+        deferredInstallEvent = e;
+        installBtn.style.display = 'inline-block';
+      });
+      installBtn.addEventListener('pointerdown', function(e){
+        e.preventDefault();
+        if(!deferredInstallEvent) return;
+        deferredInstallEvent.prompt();
+        deferredInstallEvent.userChoice.finally(function(){
+          deferredInstallEvent = null;
+          installBtn.style.display = 'none';
+        });
+      });
+      window.addEventListener('appinstalled', function(){ installBtn.style.display = 'none'; });
+    }
+  }
+  iosInstallCloseBtn.addEventListener('pointerdown', function(e){
+    e.preventDefault();
+    iosInstallOverlay.classList.remove('show');
+  });
 
   function openExitConfirm(){ exitConfirm.classList.add('show'); }
   exitBtn.addEventListener('pointerdown', function(e){ e.preventDefault(); openExitConfirm(); });
