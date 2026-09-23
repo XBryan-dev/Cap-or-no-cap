@@ -1,7 +1,7 @@
 // Bump this string every time you deploy a change.
 // It's the ONLY thing that needs to change to trigger the
 // "Update available" banner for people who already have the app open.
-const VERSION = 'v1.2.0';
+const VERSION = 'v1.2.1';
 
 const CACHE_NAME = 'cap-or-no-cap-' + VERSION;
 
